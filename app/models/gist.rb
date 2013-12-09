@@ -13,8 +13,10 @@ class Gist < ActiveRecord::Base
 
   has_many :favorites, inverse_of: :gist
 
+  has_many :gist_files, inverse_of: :gist
+
   def as_json(options=nil)
     favorite = self.favorites.where(user_id: options[:user_id])
-    super().merge({"favorite" => favorite.as_json({})[0]})
+    super(include: :gist_files).merge({"favorite" => favorite.as_json({})[0]})
   end
 end

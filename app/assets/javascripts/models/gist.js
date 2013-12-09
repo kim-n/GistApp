@@ -5,8 +5,15 @@ GistApp.Models.Gist = Backbone.Model.extend ({
     if(resp.favorite === null){
       favorite = null;
     }
-    // favorite.url = "/gists/" + favorite.get("gist_id") + "/favorite"
+
+    if(resp.gist_files === null){
+      resp.gist_files = [];
+    }
+    var gist_files = new GistApp.Collections.GistFiles(resp.gist_files);
+
+    resp.gist_files = gist_files;
     resp.favorite = favorite;
+
     return resp;
   },
 

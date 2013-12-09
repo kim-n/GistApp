@@ -8,6 +8,8 @@
 
 user = User.new(username: "user", password: "password")
 gist1 = user.gists.build(title: "Gist 1")
+gist1.gist_files.build(name: "File 1", body: "Body 1")
+gist1.gist_files.build(name: "File 2", body: "Body 2")
 gist2 = user.gists.build(title: "Gist 2")
 gist3 = user.gists.build(title: "Gist 3")
 user.favorite_gists = [gist1, gist2]
