@@ -10,4 +10,9 @@ user = User.new(username: "user", password: "password")
 gist1 = user.gists.build(title: "Gist 1")
 gist2 = user.gists.build(title: "Gist 2")
 gist3 = user.gists.build(title: "Gist 3")
+user.favorite_gists = [gist1, gist2]
 user.save!
+
+user2 = User.new(username: "user2", password: "password")
+user2.favorite_gists = [gist1]
+user2.save!

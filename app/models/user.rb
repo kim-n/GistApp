@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
     inverse_of: :owner
   )
 
+  has_many :favorites, inverse_of: :user
+  has_many :favorite_gists, through: :favorites, source: :gist
+
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
 

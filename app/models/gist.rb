@@ -10,4 +10,6 @@ class Gist < ActiveRecord::Base
     primary_key: :id,
     inverse_of: :gists
   )
+
+  has_many :favorites, inverse_of: :gist
 end
