@@ -9,6 +9,14 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
+  has_many(
+    :gists,
+    class_name: "Gist",
+    foreign_key: :owner_id,
+    primary_key: :id,
+    inverse_of: :owner
+  )
+
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
 
