@@ -1,3 +1,13 @@
 <li>
 <%= gist.get("title") %>
-<button class="favorite_button" id="btn<%= gist.get('id') %>">Fav!</button></li>
+
+
+<button class="favorite_button<%= gist.get('favorite') ? ' hidden' : '' %>"
+  id="fbtn<%= gist.get('id') %>"
+  data-id="<%= gist.get('id') %>">Fav!</button>
+
+<button class="unfavorite_button<%= gist.get('favorite') ? '' : ' hidden' %>"
+  id="ubtn<%= gist.get('id') %>"
+  data-id="<%= gist.get('id') %>">unFav!</button>
+
+</li>
