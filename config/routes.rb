@@ -4,7 +4,7 @@ NewAuthDemo::Application.routes.draw do
 
   root :to => "root#root"
 
-  resources :gists, only: [:index] do
+  resources :gists, only: [:index, :create] do
     resource :favorite, only: [:create, :destroy]
   end
 

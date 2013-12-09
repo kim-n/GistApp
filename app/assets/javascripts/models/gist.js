@@ -13,11 +13,7 @@ GistApp.Models.Gist = Backbone.Model.extend ({
   toJSON: function() {
     // clone all attributes
      var attributes = _.clone(this.attributes);
-     console.log("Sdfsdfsfs")
-     console.log(attributes)
      delete attributes["favorite"];
-     console.log(attributes)
-
      return attributes;
   }
 })

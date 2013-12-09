@@ -5,6 +5,9 @@ GistApp.Views.GistsIndex = Backbone.View.extend ({
 
     this.$el.html(renderedContent);
 
+    var $a = $("<a href='#gists/new' id='gist_form_link'>New Gist</a>");
+    this.$el.append($a);
+
     var $ul  = $('<ul></ul>');
 
     GistApp.gists.each( function (gist) {

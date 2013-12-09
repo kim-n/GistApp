@@ -4,7 +4,8 @@ GistApp.Routers.GistRouter = Backbone.Router.extend ({
   },
 
   routes: {
-    "": "gistsIndex"
+    "": "gistsIndex",
+    "gists/new": "newGist"
   },
 
   gistsIndex: function () {
@@ -16,6 +17,11 @@ GistApp.Routers.GistRouter = Backbone.Router.extend ({
         self._swapView(indexView);
       }
     })
+  },
+
+  newGist: function() {
+    var formView = new GistApp.Views.GistForm();
+    this._swapView(formView);
   },
 
   _swapView: function (newView) {
