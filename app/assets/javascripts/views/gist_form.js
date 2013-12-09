@@ -13,8 +13,9 @@ GistApp.Views.GistForm = Backbone.View.extend ({
 
     $form.html(renderedContent);
 
-    // var fileForm = JST["gist_file_form_part"]({});
- //    $form.append(fileForm);
+    console.log(GistApp.tags)
+    var tagForm = JST["gist_tags"]({tags: GistApp.tags});
+    $form.append(tagForm)
 
     this.$el.append($form);
 

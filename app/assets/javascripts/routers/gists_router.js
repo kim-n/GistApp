@@ -20,8 +20,14 @@ GistApp.Routers.GistRouter = Backbone.Router.extend ({
   },
 
   newGist: function() {
-    var formView = new GistApp.Views.GistForm();
-    this._swapView(formView);
+    var self = this;
+    GistApp.tags.fetch({
+      success: function() {
+        var formView = new GistApp.Views.GistForm();
+        self._swapView(formView);
+      }
+    })
+
   },
 
   _swapView: function (newView) {

@@ -1,5 +1,5 @@
 class Gist < ActiveRecord::Base
-  attr_accessible :owner_id, :title
+  attr_accessible :owner_id, :title, :tag_ids
 
   validates :owner, :title, presence: true
 

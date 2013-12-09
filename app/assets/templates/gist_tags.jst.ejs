@@ -1,0 +1,4 @@
+<% tags.each(function(tag) { %>
+  <input type="checkbox" name="gist[tag_ids][]" value="<%= tag.get('id') %>">
+  <%= tag.get('name') %><br>
+<% }) %>

@@ -8,5 +8,7 @@ NewAuthDemo::Application.routes.draw do
     resource :favorite, only: [:create, :destroy]
   end
 
+  resources :tags, only: [:index]
+
   resources :favorites, only: [:index]
 end
