@@ -14,6 +14,8 @@ class Gist < ActiveRecord::Base
   has_many :favorites, inverse_of: :gist
 
   has_many :gist_files, inverse_of: :gist
+  has_many :taggings, inverse_of: :gist
+  has_many :tags, through: :taggings, source: :tag
 
   def as_json(options=nil)
     favorite = self.favorites.where(user_id: options[:user_id])
