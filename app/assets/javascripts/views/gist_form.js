@@ -13,9 +13,6 @@ GistApp.Views.GistForm = Backbone.View.extend ({
 
     $form.html(renderedContent);
 
-    console.log(GistApp.tags)
-    var tagForm = JST["gist_tags"]({tags: GistApp.tags});
-    $form.append(tagForm)
 
     this.$el.append($form);
 
@@ -24,7 +21,10 @@ GistApp.Views.GistForm = Backbone.View.extend ({
 
   events: {
     "submit" : "saveGist",
-    "click #new_gist_file_link" : "newGistFileForm"
+    "click #new_gist_file_link" : "newGistFileForm",
+    "keyup #tag_select" : "filterTags",
+    "focus #tag_select" : "showAllTags",
+    "blur #tag_select" : "clearInputField"
   },
 
   saveGist: function (event) {
@@ -50,5 +50,30 @@ GistApp.Views.GistForm = Backbone.View.extend ({
 
     var fileForm = JST["gist_file_form_part"]({});
     $("#real-form").append(fileForm);
+  },
+
+
+  filterTags: function(event) {
+    var str = $("#tag_select").val();
+    console.log("input value", str)
+    var filteredTags = [];
+    GistApp.tags.each(function(tag) {
+      var name = tag.get("name");
+      if (name.indexOf(str) !== -1) {
+        filteredTags.push(tag);
+      }
+    });
+
+    var tagsTemplate = JST["gist_tags"]({tags: filteredTags});
+    $("#tags").html(tagsTemplate);
+  },
+
+  showAllTags: function (event) {
+    var tagsTemplate = JST["gist_tags"]({tags: GistApp.tags});
+    $("#tags").html(tagsTemplate);
+  },
+
+  clearInputField: function (event) {
+    $("#tag_select").val("");
   }
 });

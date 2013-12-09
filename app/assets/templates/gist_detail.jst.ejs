@@ -10,4 +10,8 @@
   id="ubtn<%= gist.get('id') %>"
   data-id="<%= gist.get('id') %>">unFav!</button>
 
+
+<% gist.get("tags").each(function(tag) { %>
+  <%= tag.get("name")%>
+<% }) %>
 </li>

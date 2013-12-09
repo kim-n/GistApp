@@ -11,6 +11,12 @@ GistApp.Models.Gist = Backbone.Model.extend ({
     }
     var gist_files = new GistApp.Collections.GistFiles(resp.gist_files);
 
+    if(resp.tags === null){
+      resp.tags = [];
+    }
+    var gist_tags = new GistApp.Collections.Tags(resp.tags);
+
+    resp.tags = gist_tags;
     resp.gist_files = gist_files;
     resp.favorite = favorite;
 

@@ -19,6 +19,6 @@ class Gist < ActiveRecord::Base
 
   def as_json(options=nil)
     favorite = self.favorites.where(user_id: options[:user_id])
-    super(include: :gist_files).merge({"favorite" => favorite.as_json({})[0]})
+    super(include: [:gist_files, :tags]).merge({"favorite" => favorite.as_json({})[0]})
   end
 end
