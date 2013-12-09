@@ -4,10 +4,9 @@ window.GistApp = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+    GistApp.gists = new GistApp.Collections.Gists();
+    new GistApp.Routers.GistRouter({$rootEl: $('#content')});
+    Backbone.history.start();
   }
 };
 
-$(document).ready(function(){
-  GistApp.initialize();
-});
